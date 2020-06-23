@@ -115,10 +115,9 @@ body {
   align-items: center;
   position: absolute;
   width: 70vw;
-  heigt: 80vh;
 }
 
-.input-box {
+.field {
   width: 60%;
   text-align: center;
 }
@@ -148,4 +147,10 @@ input[type="text"]::placeholder {
 
 .compute {
   margin-top: 10px;
+}
+
+.field p {
+  font-size: 2rem;
+  color: #f22;
+  margin-bottom: 5px;
 }
