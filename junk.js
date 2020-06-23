@@ -47,3 +47,5 @@ const otherRelief = (pension, nhis, nhf) => {
   nhf = income * .025;
   return income - (pension + nhis + nhf);
 };
+
+/*|| (taxableIncome < minAmount))*/

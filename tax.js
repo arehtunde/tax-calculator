@@ -15,13 +15,13 @@ const validateForm = input => {
     para.textContent = 'Input field cannot be left blank';
     inputField.focus();
     return false;
-  }
+  };
   if (input.match(/[a-z]/g)) {
     para.textContent = 'Please enter numerical value';
     inputField.focus();
     inputField.value = '';
     return false;
-  } 
+  }; 
   
   para.textContent = '';
   inputField.focus();
@@ -53,10 +53,27 @@ const getTaxableIncome = taxableIncome => {
 
 const calcTax = () => {
   let paye;
+  let minAmount = 300000;
   taxableIncome = getTaxableIncome();
-  if (income < 300000) {
-    paye = income * .01;
-  }
+
+  if ((income <= 300000) || (taxableIncome <= 0)) {
+    return paye = income * .01;
+  };
+
+  if (taxableIncome <= 300000) {
+    paye = taxableIncome * .07;
+  } else if ((taxableIncome > 300000) && (taxableIncome <= 600000)) {
+    paye = ((taxableIncome - 300000) * .11) + 21000;
+  } else if ((taxableIncome > 600000) && (taxableIncome <= 1100000)) {
+    paye = ((taxableIncome - 600000) * .15) + 21000 + 33000;
+  } else if ((taxableIncome > 1100000) && (taxableIncome <= 1600000)) {
+    paye = ((taxableIncome - 1100000) * .19) + 21000 + 33000 + 75000;
+  } else if ((taxableIncome > 1600000) && (taxableIncome <= 3200000)) {
+    paye = ((taxableIncome - 1600000) * .21) + 21000 + 33000 + 75000 + 95000;
+  } else {
+    paye = ((taxableIncome - 3200000) * .24) + 21000 + 33000 + 75000 + 95000 + 336000;
+  };
+  
   return paye;
 };
 
