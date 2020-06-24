@@ -5,39 +5,18 @@ let field = document.querySelector('.field');
 let calcPage = document.querySelector('.calc-page');
 let compute = document.querySelector('.compute');
 let para = document.querySelector('p');
-//let myForm = document.querySelector('.myForm');
 let inputField = document.querySelector('.inputfield');
 
-const validateForm = input => {
-  input = inputField.value;
-
-  if (input === '')  {
-    para.textContent = 'Input field cannot be left blank';
-    inputField.focus();
-    return false;
-  };
-  if (input.match(/[a-z]/g)) {
-    para.textContent = 'Please enter numerical value';
-    inputField.focus();
-    inputField.value = '';
-    return false;
-  }; 
-  
-  para.textContent = '';
-  inputField.focus();
-  inputField.value = '';
-
-  return Number(input);
-};
-
 const relief = (consolidated, pension, nhis, nhf, reliefSum) => {
-  income = validateForm();
+  income = Number(inputField.value);
   let reliefAllowance = 200000;
   let reliefPercent = income * .01;
-  let fixedPercent = income * .2;
+  fixedPercent = income * .2;
   pension = income * .08;
   nhis = income * .05;
   nhf = income * .025;
+
+  tabInc = (reliefAllowance > reliefPercent) || (reliefAllowance === reliefPercent) ? reliefAllowance : reliefPercent;
   
   consolidated = (reliefAllowance > reliefPercent) || (reliefAllowance === reliefPercent) ? (reliefAllowance + fixedPercent) : (reliefPercent + fixedPercent);
   
@@ -46,14 +25,13 @@ const relief = (consolidated, pension, nhis, nhf, reliefSum) => {
   return reliefSum;
 };
 
-const getTaxableIncome = taxableIncome => {
+const getTaxableIncome = () => {
   totalRelief = relief();
   return taxableIncome = income - totalRelief;
 };
 
 const calcTax = () => {
   let paye;
-  let minAmount = 300000;
   taxableIncome = getTaxableIncome();
 
   if ((income <= 300000) || (taxableIncome <= 0)) {
@@ -77,9 +55,146 @@ const calcTax = () => {
   return paye;
 };
 
+const displayResult = () => {
+  taxReturn = calcTax();
+  let resultPage = document.createElement('div');
+  resultPage.setAttribute('class', 'result-Page');
+  resultPage.style.backgroundColor = '#fef7f8';
+  resultPage.style.height = '70vh';
+  calcPage.appendChild(resultPage);
 
-compute.addEventListener('click', calcTax);
+  visual.hidden = true;
+  instruction.hidden = true;
+  field.hidden = true;
 
+  const table2 = `
+  <table>
+  <tbody>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>NGN</td>
+      <td>NGN</td>
+    </tr> 
+    <tr>
+      <td>Gross Income</td>
+      <td>&nbsp;</td>
+      <td>${income}</td>
+    </tr>
+    <tr>
+      <td>Income Tax</td>
+      <td>1% of GI</td>
+      <td>&nbsp;</td>
+      <td>${calcTax()}</td>
+    </tr>
+  </tbody>
+  </table>
+  `;
+
+  const table1 = `
+  <table>
+  <tbody>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>NGN</td>
+      <td>NGN</td>
+    </tr>
+    <tr>
+      <td>Gross Income</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>${income}</td>
+    </tr>
+    <tr>
+      <td>Relief</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Consolidated relief allowance</td>
+      <td scope="row">Higher of NGN 200,000 or 1% of GI</td>
+      <td>${tabInc}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td scope="row">20% of GI</td>
+      <td>${fixedPercent}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Pension</td>
+      <td>8% of GI</td>
+      <td>${income * .08}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NHIS</td>
+      <td>5% of GI</td>
+      <td>${income * .05}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>NHF</td>
+      <td>2.5% of GI</td>
+      <td>${income * .025}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Total Relief</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>${relief()}</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Taxable Income</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>${getTaxableIncome()}</td>
+    </tr>
+    <tr>
+      <td>Income Tax</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>${calcTax()}</td>
+    </tr>
+  </tbody>
+  </table>
+  `;
+  
+  //resultPage.innerHTML = table1;
+
+  if ((income <= 300000) || (taxableIncome <= 0)) {
+    return resultPage.innerHTML = table2;
+  };
+  resultPage.innerHTML = table1;
+}
+
+const showResult = () => {
+  let input = inputField.value;
+  if (input === '')  {
+    para.textContent = 'Input field cannot be left blank';
+    inputField.focus();
+    return false;
+  };
+  if (input.match(/[a-z]/g)) {
+    para.textContent = 'Please enter numerical value';
+    inputField.focus();
+    inputField.value = '';
+    return false;
+  }; 
+  Number(input);
+  displayResult();
+};
+
+compute.addEventListener('click', showResult);
 
 buttonProceed.addEventListener('click', () => {
   visual.hidden = true;
