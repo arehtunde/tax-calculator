@@ -1,11 +1,10 @@
-let buttonProceed = document.querySelector('.proceed');
-let visual = document.querySelector('.visual');
-let instruction = document.querySelector('.instruction');
-let field = document.querySelector('.field');
-let calcPage = document.querySelector('.calc-page');
+let inputPage = document.querySelector('.input-page');
+let welcomePage = document.querySelector('.welcome-page');
 let compute = document.querySelector('.compute');
 let para = document.querySelector('p');
+let myForm = document.querySelector('.myform');
 let inputField = document.querySelector('.inputfield');
+let container = document.querySelector('.container');
 
 const relief = (consolidated, pension, nhis, nhf, reliefSum) => {
   income = Number(inputField.value);
@@ -57,15 +56,12 @@ const calcTax = () => {
 
 const displayResult = () => {
   taxReturn = calcTax();
-  let resultPage = document.createElement('div');
+  let resultPage = document.createElement('section');
   resultPage.setAttribute('class', 'result-Page');
-  resultPage.style.backgroundColor = '#fef7f8';
-  resultPage.style.height = '70vh';
-  calcPage.appendChild(resultPage);
+  container.append(resultPage);
 
-  visual.hidden = true;
-  instruction.hidden = true;
-  field.hidden = true;
+  welcomePage.hidden = true;
+  inputPage.hidden = true;
 
   const table2 = `
   <table>
@@ -168,13 +164,20 @@ const displayResult = () => {
   </tbody>
   </table>
   `;
-  
-  //resultPage.innerHTML = table1;
 
-  if ((income <= 300000) || (taxableIncome <= 0)) {
-    return resultPage.innerHTML = table2;
-  };
-  resultPage.innerHTML = table1;
+  resultPage.innerHTML = ((income <= 300000) || (taxableIncome <= 0)) ? resultPage.innerHTML = table2 : resultPage.innerHTML = table1;
+
+  let homeButton = document.createElement('button');
+  homeButton.setAttribute('class', 'button');
+  homeButton.textContent = 'Home';
+  resultPage.appendChild(homeButton);
+  homeButton.addEventListener('click', () => {
+    welcomePage.hidden = false;
+    inputPage.hidden = false;
+    resultPage.hidden = true;
+    inputField.value = '';
+    inputField.focus();
+  });
 }
 
 const showResult = () => {
@@ -195,11 +198,3 @@ const showResult = () => {
 };
 
 compute.addEventListener('click', showResult);
-
-buttonProceed.addEventListener('click', () => {
-  visual.hidden = true;
-  instruction.hidden = true;
-  field.hidden = false;
-  calcPage.style.backgroundColor = '#fef7f8';
-  calcPage.style.height = '80vh';
-});
