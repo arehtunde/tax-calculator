@@ -174,7 +174,7 @@ const displayResult = () => {
   resultPage.append(homeButton);
   homeButton.addEventListener('click', () => {
     welcomePage.hidden = false;
-    inputPage.hidden = true;
+    inputPage.hidden = false;
     resultPage.hidden = true;
     inputField.value = '';
     inputField.focus();
@@ -199,10 +199,10 @@ const showResult = () => {
   displayResult();
 };
 
+compute.addEventListener('click', showResult);
+
 proceed.addEventListener('click', () => {
   welcomePage.hidden = true;
   inputPage.hidden = false;
   //resultPage.hidden = true;
 });
-
-compute.addEventListener('click', showResult);
