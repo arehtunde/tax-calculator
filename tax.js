@@ -22,7 +22,7 @@ const relief = (consolidated, pension, nhis, nhf, reliefSum) => {
   
   reliefSum = pension + nhis + nhf + consolidated;
 
-  return reliefSum;
+  return reliefSum.toFixed(2);
 };
 
 const getTaxableIncome = () => {
@@ -35,7 +35,7 @@ const calcTax = () => {
   taxableIncome = getTaxableIncome();
 
   if ((income <= 300000) || (taxableIncome <= 0)) {
-    return paye = income * .01;
+    return paye = (income * .01).toFixed(2);
   };
 
   if (taxableIncome <= 300000) {
@@ -52,7 +52,7 @@ const calcTax = () => {
     paye = ((taxableIncome - 3200000) * .24) + 21000 + 33000 + 75000 + 95000 + 336000;
   };
   
-  return paye;
+  return paye.toFixed(2);
 };
 
 const displayResult = () => {
@@ -76,13 +76,20 @@ const displayResult = () => {
     <tr>
       <td>Gross Income</td>
       <td>&nbsp;</td>
-      <td>${income}</td>
+      <td>&nbsp;</td>
+      <td>${income.toFixed(2)}</td>
     </tr>
     <tr>
       <td>Income Tax</td>
       <td>1% of GI</td>
       <td>&nbsp;</td>
       <td>${calcTax()}</td>
+    </tr>
+    <tr>
+      <td>Net Income</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>${income - calcTax()}</td>
     </tr>
   </tbody>
   </table>
@@ -117,25 +124,25 @@ const displayResult = () => {
     </tr>
     <tr>
       <td scope="row">20% of GI</td>
-      <td>${fixedPercent}</td>
+      <td style="text-align:right">${fixedPercent}</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>Pension</td>
       <td>8% of GI</td>
-      <td>${income * .08}</td>
+      <td>${(income * .08).toFixed(2)}</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>NHIS</td>
       <td>5% of GI</td>
-      <td>${income * .05}</td>
+      <td>${(income * .05).toFixed(2)}</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>NHF</td>
       <td>2.5% of GI</td>
-      <td>${income * .025}</td>
+      <td>${(income * .025).toFixed(2)}</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
@@ -143,12 +150,6 @@ const displayResult = () => {
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>${relief()}</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>Taxable Income</td>
@@ -161,6 +162,18 @@ const displayResult = () => {
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>${calcTax()}</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Net Income</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>${income - calcTax()}</td>
     </tr>
   </tbody>
   </table>
