@@ -24,6 +24,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f2f2f2;
+  color: #0339A6;
+  border-radius: 10px;
 }
 
 .holder {
@@ -67,7 +70,8 @@ body {
 .input-page {
   text-align: center;
   margin: 20px;
-  border: 3px solid;
+  border: 2px solid;
+  border-radius: 10px;
   padding: 20px;
 }
 
@@ -86,13 +90,12 @@ label {
 input[type="text"] {
   margin-top: 5px;
   border-radius: 5px;
-  outline: none;
   padding: 5px;
 }
 
 .button {
   border: 2px solid #0339A6;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   color: #0339A6;
   border-radius: 5px;
   display: block;
@@ -101,7 +104,6 @@ input[type="text"] {
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
-  outline: none;
 }
 
 .button:hover {
@@ -124,7 +126,7 @@ table {
   border-collapse: collapse;
   color: #0339A6;
   margin: 10px auto;
-  width: ;
+  width: 90vw;
 }
 
 td {
@@ -149,7 +151,7 @@ tr:nth-child(1), tr:nth-last-child(1) {
   }
 
   table {
-
+    width: 70vw;
   }
 }
 
@@ -157,6 +159,9 @@ tr:nth-child(1), tr:nth-last-child(1) {
   .container {
     width: 80%;
     height: 80%;
-    border: 1px solid;
+  }
+
+  table {
+    width: 50vw;
   }
 }

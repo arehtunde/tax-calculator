@@ -65,13 +65,13 @@ const displayResult = () => {
   inputPage.hidden = true;
 
   const table2 = `
-  <table>
+  <table style="height:40vh;">
   <tbody>
     <tr>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>NGN</td>
-      <td>NGN</td>
+      <td style="width:22%;">&nbsp;</td>
+      <td style="width:18%;">NGN</td>
+      <td style="width:15%;">NGN</td>
     </tr> 
     <tr>
       <td>Gross Income</td>
