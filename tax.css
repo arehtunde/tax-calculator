@@ -24,11 +24,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #0339A6;
 }
 
 .holder {
   margin: 20px;
+  color: #0339A6;
 }
 
 .holder h1 {
@@ -45,6 +45,7 @@ body {
   line-height: 2;
   font-size: 1.5rem;
   margin: 20px;
+  color: #0339A6;
 }
 
 .instruction ul {
@@ -96,7 +97,7 @@ span {
 }
 
 .input-page .red {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .button {
