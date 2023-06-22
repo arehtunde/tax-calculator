@@ -1,0 +1,174 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holder {
+  margin: 20px;
+  color: #0339A6;
+}
+
+.holder h1 {
+  font-size: 2.3rem;
+  margin-bottom: 0;
+}
+
+.holder h2 {
+  font-size: 1.8rem;
+  margin-top: 0;
+}
+
+.instruction {
+  line-height: 2;
+  font-size: 1.5rem;
+  margin: 20px;
+  color: #0339A6;
+}
+
+.instruction ul {
+  padding: 0;
+  list-style: none;
+}
+
+.instruction li {
+  text-indent: -2rem;
+  padding-left: 2rem;
+}
+
+.instruction li:before {
+  content: '\2714';
+  width: 2rem;
+  color: #0339A6;
+  display: block;
+  float: left;
+}
+
+.input-page {
+  text-align: center;
+  margin: 20px;
+  border: 2px solid #0339A6;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.input-page p {
+  font-size: 2rem;
+  color: #f22;
+  margin-bottom: 5px;
+}
+
+label {
+  display: block;
+  font-size: 1.5rem;
+  color: #0339A6;
+}
+
+input[type="text"] {
+  margin-top: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+span {
+  color: #f22;
+}
+
+.input-page .red {
+  font-size: 1.3rem;
+}
+
+.button {
+  border: 2px solid #0339A6;
+  background-color: #f2f2f2;
+  color: #0339A6;
+  border-radius: 5px;
+  display: block;
+  padding: 2px 5px;
+  margin: 10px auto;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+}
+
+.button:hover {
+  background-color: #0339A6;
+  color: #fff;
+}
+
+.result-page {
+  height: 80vh;
+  width: 80vw;
+  border: 5px solid red;
+}
+
+table {
+  border-top: 3px solid #0339A6;
+  border-bottom: 3px solid #0339A6;       
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 5px;
+  border-collapse: collapse;
+  color: #0339A6;
+  margin: 10px auto;
+  width: 90vw;
+}
+
+td {
+  border-top: 2px solid #A6ABAB;
+  padding: 5px;
+}
+
+tr td:nth-child(3), td:nth-child(4) {
+  text-align: right;
+}
+tr:nth-child(1), tr:nth-last-child(1) {
+  background-color: #d3d3d3;
+}
+
+@media screen and (min-width: 600px) {
+  .button {
+    width: 23%;
+  }
+
+  .input-page {
+    width: 50%;
+  }
+
+  table {
+    width: 70vw;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .container {
+    width: 80%;
+    height: 80%;
+  }
+
+  table {
+    width: 50vw;
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Tax Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tax.css">
+  <script src="tax.js" async></script>
+</head>
+<body>
+  <main class="container">
+    <section class="welcome-page">
+      <div class="holder">
+        <h1>PAYE Tax Calculator</h1>
+        <h2>Calculate your Income Tax</h2>
+      </div>
+
+      <div class="instruction">
+        <ul>
+          <li>The calculator is per annum.</li>
+          <li>The currency of the taxable income band is in Nigerian Naira. Convert any foreign income to local currency before using this calculator.</li>
+          <li>The calculator assume a deduction of 8% of the total income to the individual pension contributory.</li>
+          <li>The calculator assume a 2.5% to the NHF.</li>
+          <li>The calculator assume a 5% to the NHIS</li>
+          <li>The calculator also assume a consolidated relief fund of NGN200,000 per annum or 1% of annual gross income, plus 20% of annual gross income.</li>
+        </ul>
+        <button class="button proceed">Proceed</button>
+      </div>
+    </section>
+
+    <section class="input-page" hidden>
+      <div class="myform">
+        <p></p>
+        <label for="inputfield">Enter Your Income</label>
+        <input type="text" inputmode="numeric" id="inputfield" class="inputfield">
+        <button class="button compute">Calculate</button>
+        <p class="red"><span>*</span>Enter your gross Income per annum</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+<!--https://fullstackopen.com/en/-->
